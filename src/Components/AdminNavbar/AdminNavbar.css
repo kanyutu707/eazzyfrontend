@@ -1,0 +1,25 @@
+.adminnavbarcontainer{
+    width: 100%;
+    background-color: white;
+    padding: 10px;
+    display: flex;
+    justify-content: flex-end;
+}
+.adminnavbarcontainer span{
+    font-weight: 700;
+    font-size: 19px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    cursor: pointer;
+    background-color: rgb(253, 253, 253);
+    
+}
+.adminnavbarcontainer span:hover{
+    background-color: lightgray;
+    border-radius: 3px;
+}
+.adminnavbarcontainer span:first-child{
+    margin-right: 70px;
+}
+.adminnavbarcontainer span:last-child{
+    margin-right: 20px;
+}

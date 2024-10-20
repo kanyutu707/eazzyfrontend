@@ -1,0 +1,32 @@
+.applicationcontainer{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 91vh;
+}
+.applicationcontainer form{
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    grid-gap: 20px;
+    background-color: white;
+    padding: 20px;
+    width: 80%;
+}
+.applicationcontainer form .text_group{
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    grid-gap: 10px;
+}
+.applicationcontainer form header{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-bottom: 1px solid lightgray;
+    padding: 3px;
+    font-weight: 700;
+    font-size: 21px;
+}
+.applicationcontainer form .text_group label{
+    font-weight: 500;
+    font-size: 17px;
+}
