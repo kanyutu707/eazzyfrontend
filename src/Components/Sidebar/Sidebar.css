@@ -9,8 +9,9 @@
 .closedsidebarcontainer{
     display: flex;
     flex-direction: column;
-    width: 35px;
+    width: 45px;
     padding: 20px;
+    background-color: white;
     height: 100vh;
     align-items: center;
 }
@@ -127,7 +128,7 @@
     height: 17px;
     width: 17px;
 }
-.closedsidebarcontainer .subnav h5{
+.closedsidebarcontainer .subnav h5, .closedsidebarcontainer .subnav h4{
     display: none;
 }
 .closedsidebarcontainer .subnav svg{
