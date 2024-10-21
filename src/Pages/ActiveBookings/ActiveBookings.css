@@ -111,10 +111,10 @@
     font-weight: 400;
     border-bottom: 1px solid whitesmoke;
   }
-  .activebookingscontainer table tbody tr td:first-child{
-    display: none;
-  }
   .activebookingscontainer table tbody tr .titleStyle{
         font-weight: 750;
+  }
+  .activebookingscontainer table tbody tr td:first-child{
+    display: none;
   }
 }
