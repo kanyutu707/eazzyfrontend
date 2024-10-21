@@ -110,6 +110,6 @@
     font-weight: 400;
   }
   .activebookingscontainer table tbody tr td:first-child{
-    font-weight: 710;
+        font-weight: 750;
   }
 }
