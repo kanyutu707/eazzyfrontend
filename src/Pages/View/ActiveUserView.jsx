@@ -9,7 +9,7 @@ const ActiveUserView = () => {
     useEffect(()=>{
         const fetchData=async ()=>{
           try {
-            const response=await fetch(`http://localhost:8080/jobs/getById/${id}`,{
+            const response=await fetch(`https://eazzybackend-production.up.railway.app/jobs/getById/${id}`,{
               headers:{
                  'Authorization':`Bearer ${sessionStorage.getItem('token')}`,
                   'Content-Type':'application/json'
