@@ -17,7 +17,7 @@ const SignUp = () => {
     const handleSubmit=async(e)=>{
         e.preventDefault();
         try {
-            const response=await fetch("https://eazzybackend.onrender.com/authenticate/register", {
+            const response=await fetch("https://eazzybackend-production.up.railway.app/authenticate/register", {
                 method: 'POST',
                 headers:{
                     'Content-Type':'application/json'
