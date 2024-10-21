@@ -1,6 +1,6 @@
 import React from 'react'
 import './Hero.css'
-import house from '../../assets/house.jpg'
+import house from '../../assets/hero.jpg'
 import { useNavigate } from 'react-router-dom'
 
 
