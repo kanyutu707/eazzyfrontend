@@ -17,7 +17,7 @@ const Application = () => {
     const handleSubmit=async (e)=>{
         e.preventDefault();
         try {
-            const response=await fetch("http://localhost:8080/applications/create", {
+            const response=await fetch("https://eazzybackend-production.up.railway.app/applications/create", {
                 method: "POST",
                 headers:{
                     'Authorization': `Bearer ${sessionStorage.getItem(`token`)}`,
