@@ -89,3 +89,8 @@
     width: 130px;
 
 }
+@media screen and (max-width:700px){
+  .activebookingscontainer{
+    width: 100%;
+  }
+}
