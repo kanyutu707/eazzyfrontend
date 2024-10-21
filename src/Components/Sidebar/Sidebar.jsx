@@ -32,7 +32,7 @@ const Sidebar = () => {
 
     const handleToggle=()=>{
       setIsToggled(!isToggled);
-      changeStyle
+      changeStyle();
     }
 
     const changeStyle=()=>{
