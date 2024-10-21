@@ -34,7 +34,7 @@ const Sidebar = () => {
     }
   return (
     <div className='sidebarcontainer'>
-        <header><span>ADMIN</span> <button onClick={isToggled}>{isToggled? 'ON': 'OFF'}</button> </header>
+        <header><span>ADMIN</span> <button onClick={handleToggle}>{isToggled? 'ON': 'OFF'}</button> </header>
         <span className="mainnav" onClick={moveToDashboard}>
            <AiFillDashboard/> DASHBOARD
         </span>
