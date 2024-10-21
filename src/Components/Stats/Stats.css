@@ -21,7 +21,7 @@
     height: 30px;
     width: 30px;
 }
-@media screen and (max-width:1200px){
+@media screen and (max-width:800px){
     .statscontainer{
         grid-template-columns: repeat(2, 1fr);
     }
