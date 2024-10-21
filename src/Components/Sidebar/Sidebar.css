@@ -1,4 +1,4 @@
-.sidebarcontainer, .closedsidebarcontainer{
+.sidebarcontainer{
     display: flex;
    flex-direction: column;
     background-color: white;
@@ -6,7 +6,15 @@
     width: 250px;
     padding: 20px;
 }
-.sidebarcontainer header, .closedsidebarcontainer header{
+.closedsidebarcontainer{
+    display: flex;
+    flex-direction: column;
+    width: 20px;
+    padding: 20px;
+    height: 100vh;
+    align-items: center;
+}
+.sidebarcontainer header{
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -15,7 +23,18 @@
     font-size: 22px;
     font-weight: 700;
 }
-.sidebarcontainer .mainnav, .closedsidebarcontainer .mainnav{
+.closedsidebarcontainer header{
+    display: flex;
+    align-items: center;
+    border-bottom:3px solid lightgray;
+    height: 35px;
+    font-size: 22px;
+    font-weight: 700;
+}
+.closedsidebarcontainer header span{
+    display: none;
+}
+.sidebarcontainer .mainnav{
     padding: 10px;
     border-bottom: 2px solid lightgray;
     height: 90px;
@@ -25,12 +44,12 @@
     font-size: 20px;
     font-weight: 650;
 }
-.sidebarcontainer .mainnav svg, .closedsidebarcontainer .mainnav svg{
+.sidebarcontainer .mainnav svg{
     margin-right: 7px;
     height: 20px;
     width: 20px;
 }
-.sidebarcontainer header button, .closedsidebarcontainer header button{
+.sidebarcontainer header button{
     padding: 5px;    
     cursor: pointer;
     background-color: transparent;
@@ -43,11 +62,12 @@
     justify-content: center;
 
 }
-.sidebarcontainer header button svg, .closedsidebarcontainer header button svg{
+.sidebarcontainer header button svg{
     width: 100%;
     height: 100%;
+
 }
-.sidebarcontainer .subnav, .closedsidebarcontainer, .subnav{
+.sidebarcontainer .subnav{
     padding: 25px;
     border-bottom: 1px solid lightgray;
     height: 70px;
@@ -57,13 +77,8 @@
     font-size: 17px;
     font-weight: 600;
 }
-.sidebarcontainer .subnav svg, .closedsidebarcontainer .subnav svg{
+.sidebarcontainer .subnav svg{
     margin-right: 5px;
     height: 17px;
     width: 17px;
-}
-.closedsidebarcontainer{
-    background-color: black;
-    height: 100vh;
-    
 }

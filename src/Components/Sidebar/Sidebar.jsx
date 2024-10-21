@@ -43,28 +43,28 @@ const Sidebar = () => {
     <div className={style}>
         <header><span>ADMIN</span> <button onClick={handleToggle}>{isToggled? <VscThreeBars/>: <IoMdClose />}</button> </header>
         <span className="mainnav" onClick={moveToDashboard}>
-           <AiFillDashboard/> DASHBOARD
+           <AiFillDashboard/> <h4>DASHBOARD</h4>
         </span>
         <span className="mainnav" onClick={moveToCurrentClients}>
-           <MdCircleNotifications/> APPLICANTS
+           <MdCircleNotifications/> <h4>APPLICANTS</h4>
         </span>
         <span className="subnav" onClick={moveToCurrentClients}>
-           <MdStayCurrentPortrait/>  ACTIVE  
+           <MdStayCurrentPortrait/>  <h5>ACTIVE</h5>  
         </span>
         <span className="subnav" onClick={moveToPastClients}>
-          <MdDateRange/>  WITHDRAWN
+          <MdDateRange/>  <h5>WITHDRAWN</h5>
         </span>
         <span className="mainnav" onClick={moveToRentals}>
-          <MdRoomService/>  JOBS
+          <MdRoomService/>  <h4>JOBS</h4>
         </span>
         <span className="subnav" onClick={moveToRentals}>
-           <MdSensorOccupied/> ACTIVE
+           <MdSensorOccupied/> <h5>ACTIVE</h5>
         </span>
         <span className="subnav" onClick={moveToForSale}>
-          <MdFreeCancellation/>  INACTIVE
+          <MdFreeCancellation/>  <h5>INACTIVE</h5>
         </span>
         <span className="subnav" onClick={moveToNewJob}>
-            <IoMdLogOut/> CREATE
+            <IoMdLogOut/> <h4>CREATE</h4>
         </span>
     </div>
   )
