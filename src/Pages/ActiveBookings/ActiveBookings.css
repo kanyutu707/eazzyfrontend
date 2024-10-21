@@ -105,9 +105,14 @@
     grid-template-columns: repeat(1, 1fr);
     grid-gap: 10px;
     height: unset;
+    padding: 10px;
   }
   .activebookingscontainer table tbody tr td{
     font-weight: 400;
+    border-bottom: 1px solid whitesmoke;
+  }
+  .activebookingscontainer table tbody tr td:first-child{
+    display: none;
   }
   .activebookingscontainer table tbody tr .titleStyle{
         font-weight: 750;
