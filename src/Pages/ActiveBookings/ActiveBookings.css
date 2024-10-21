@@ -93,4 +93,7 @@
   .activebookingscontainer{
     width: 100%;
   }
+  .activebookingscontainer table{
+    width: 100%;
+  }
 }
