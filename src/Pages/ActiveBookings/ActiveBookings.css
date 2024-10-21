@@ -106,4 +106,10 @@
     grid-gap: 10px;
     height: unset;
   }
+  .activebookingscontainer table tbody tr td{
+    font-weight: 400;
+  }
+  .activebookingscontainer table tbody tr td:first-child{
+    font-weight: 710;
+  }
 }
