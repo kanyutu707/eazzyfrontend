@@ -9,7 +9,7 @@ const ActiveAdminView = () => {
     useEffect(()=>{
         const fetchData=async ()=>{
           try {
-            const response=await fetch(https://eazzybackend-production.up.railway.app/jobs/getById/${id}`,{
+            const response=await fetch("https://eazzybackend-production.up.railway.app/jobs/getById/${id}`,{
               headers:{
                  'Authorization':`Bearer ${sessionStorage.getItem('token')}`,
                   'Content-Type':'application/json'
