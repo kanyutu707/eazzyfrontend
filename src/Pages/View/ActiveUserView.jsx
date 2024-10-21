@@ -34,12 +34,12 @@ const ActiveUserView = () => {
       e.preventDefault();
       console.log('handleSubmit called');
       try {
-          console.log('Sending request to:', `http://localhost:8080/applications/update/${id}`);
+          console.log('Sending request to:', `https://eazzybackend-production.up.railway.app/applications/update/${id}`);
           console.log('Request body:', JSON.stringify({
               applicationStatus: "INACTIVE",
               applicationDate: new Date().toISOString(),
           }));
-          const response = await fetch(`http://localhost:8080/applications/update/${id}`, {
+          const response = await fetch(`https://eazzybackend-production.up.railway.app/applications/update/${id}`, {
               method: "PUT",
               headers: {
                   'Authorization': `Bearer ${sessionStorage.getItem('token')}`,
