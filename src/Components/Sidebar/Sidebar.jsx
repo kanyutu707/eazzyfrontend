@@ -28,12 +28,19 @@ const Sidebar = () => {
       
     }
     const [isToggled, setIsToggled]=useState(false);
+    const [style, setStyle]=useState("sidebarcontainer")
 
     const handleToggle=()=>{
       setIsToggled(!isToggled);
+      changeStyle
+    }
+
+    const changeStyle=()=>{
+      if(style!=="sidebarcontainer") setStyle("sidebarcontainer");
+      else setStyle("closedsidebarcontainer")
     }
   return (
-    <div className='sidebarcontainer'>
+    <div className={style}>
         <header><span>ADMIN</span> <button onClick={handleToggle}>{isToggled? <VscThreeBars/>: <IoMdClose />}</button> </header>
         <span className="mainnav" onClick={moveToDashboard}>
            <AiFillDashboard/> DASHBOARD
