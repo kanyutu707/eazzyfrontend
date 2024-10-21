@@ -64,7 +64,7 @@ const ActiveBookings = () => {
             {applications.map((application)=>(
                 <tr key={application.id}>
                         <td>1</td>
-                        <td>{application.posting?.title}</td>
+                        <td className='titleStyle'>{application.posting?.title}</td>
                         <td>{application.posting?.postType}</td>
                         <td>{application.posting?.description}</td>
                         <td>{application.posting?.salary}</td>

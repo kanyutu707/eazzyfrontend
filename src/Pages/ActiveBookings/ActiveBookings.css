@@ -109,7 +109,7 @@
   .activebookingscontainer table tbody tr td{
     font-weight: 400;
   }
-  .activebookingscontainer table tbody tr td:first-child{
+  .activebookingscontainer table tbody tr .titleStyle{
         font-weight: 750;
   }
 }
