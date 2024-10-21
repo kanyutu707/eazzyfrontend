@@ -127,6 +127,9 @@
     height: 17px;
     width: 17px;
 }
+.closedsidebarcontainer .subnav h4{
+    display: none;
+}
 .closedsidebarcontainer .subnav svg{
     
     height: 17px;
