@@ -116,4 +116,7 @@
     .pastclientscontainer table tbody tr td:first-child{
       display: none;
     }
+    .pastclientscontainer table caption{
+        grid-template-columns: repeat(1, 1fr);
+    }
   }
