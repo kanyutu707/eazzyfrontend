@@ -112,4 +112,36 @@
     width: 130px;
 
 }
+@media screen and (max-width:700px){
+    .pastbookingscontainer{
+      width: 100%;
+    }
+    .pastbookingscontainer table{
+      width: 100%;
+      
+    }
+    .pastbookingscontainer table thead{
+      display: none;
+    }
+    .pastbookingscontainer table tbody tr{
+      display: grid;
+      grid-template-columns: repeat(1, 1fr);
+      grid-gap: 10px;
+      height: unset;
+      padding: 10px;
+      margin-top: 40px;
+    }
+    .pastbookingscontainer table tbody tr td{
+      font-weight: 400;
+      border-bottom: 1px solid whitesmoke;
+      display: flex;
+      align-items: center;
+    }
+    .pastbookingscontainer table tbody tr .titleStyle{
+          font-weight: 750;
+    }
+    .pastbookingscontainer table tbody tr td:first-child{
+      display: none;
+    }
+  }
 

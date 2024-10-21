@@ -85,3 +85,35 @@
     font-weight: 300;
     
 }
+@media screen and (max-width:700px){
+    .pastclientscontainer{
+      width: 100%;
+    }
+    .pastclientscontainer table{
+      width: 100%;
+      
+    }
+    .pastclientscontainer table thead{
+      display: none;
+    }
+    .pastclientscontainer table tbody tr{
+      display: grid;
+      grid-template-columns: repeat(1, 1fr);
+      grid-gap: 10px;
+      height: unset;
+      padding: 10px;
+      margin-top: 40px;
+    }
+    .pastclientscontainer table tbody tr td{
+      font-weight: 400;
+      border-bottom: 1px solid whitesmoke;
+      display: flex;
+      align-items: center;
+    }
+    .pastclientscontainer table tbody tr .titleStyle{
+          font-weight: 750;
+    }
+    .pastclientscontainer table tbody tr td:first-child{
+      display: none;
+    }
+  }
