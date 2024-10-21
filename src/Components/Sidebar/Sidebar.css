@@ -80,10 +80,26 @@
     justify-content: center;
 
 }
+.closedsidebarcontainer head button{
+    padding: 5px;    
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+    border-radius: 100%;
+    height: 17px;
+    width: 17px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 .sidebarcontainer header button svg{
     width: 100%;
     height: 100%;
 
+}
+.closedsidebarcontainer header button svg{
+    width: 100%;
+    height: 100%;
 }
 .sidebarcontainer .subnav{
     padding: 25px;
@@ -95,8 +111,24 @@
     font-size: 17px;
     font-weight: 600;
 }
+.closedsidebarcontainer .subnav{
+    padding: 25px;
+    border-bottom: 1px solid lightgray;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 17px;
+    font-weight: 600;
+}
+
 .sidebarcontainer .subnav svg{
     margin-right: 5px;
+    height: 17px;
+    width: 17px;
+}
+.closedsidebarcontainer .subnav svg{
+    
     height: 17px;
     width: 17px;
 }
