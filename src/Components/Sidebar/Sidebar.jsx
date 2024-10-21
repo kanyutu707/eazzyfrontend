@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './Sidebar.css'
 import { AiFillDashboard } from "react-icons/ai";
 import { MdCircleNotifications, MdDateRange, MdFreeCancellation,  MdRoomService, MdSensorOccupied, MdStayCurrentPortrait } from 'react-icons/md';
@@ -27,9 +27,14 @@ const Sidebar = () => {
       navigate('/admin/newjob')
       
     }
+    const [isToggled, setIsToggled]=useState(false);
+
+    const handleToggle=()=>{
+      setIsToggled(!isToggled);
+    }
   return (
     <div className='sidebarcontainer'>
-        <header><span>ADMIN</span> <VscThreeBars /> </header>
+        <header><span>ADMIN</span> <button onClick={isToggled}>{isToggled? 'ON': 'OFF'}</button> </header>
         <span className="mainnav" onClick={moveToDashboard}>
            <AiFillDashboard/> DASHBOARD
         </span>

@@ -30,6 +30,22 @@
     height: 20px;
     width: 20px;
 }
+.sidebarcontainer header button{
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: #ddd;
+}
+.sidebarcontainer header button.on{
+    background-color: #5cb85c; 
+    color: white;
+}
+.sidebarcontainer header button.off{
+    background-color: #d9534f;
+    color: white;
+}
 .sidebarcontainer .subnav{
     padding: 25px;
     border-bottom: 1px solid lightgray;
