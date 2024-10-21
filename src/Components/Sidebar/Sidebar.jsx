@@ -1,7 +1,8 @@
 import React from 'react'
 import './Sidebar.css'
 import { AiFillDashboard } from "react-icons/ai";
-import { MdCircleNotifications, MdDateRange, MdFreeCancellation, MdLineStyle, MdRoomService, MdSensorOccupied, MdStayCurrentPortrait } from 'react-icons/md';
+import { MdCircleNotifications, MdDateRange, MdFreeCancellation,  MdRoomService, MdSensorOccupied, MdStayCurrentPortrait } from 'react-icons/md';
+import { VscThreeBars } from "react-icons/vsc";
 import { IoMdLogOut } from 'react-icons/io';
 import { useNavigate } from 'react-router-dom';
 
@@ -28,7 +29,7 @@ const Sidebar = () => {
     }
   return (
     <div className='sidebarcontainer'>
-        <header><span>ADMIN</span> <MdLineStyle/></header>
+        <header><span>ADMIN</span> <VscThreeBars /> </header>
         <span className="mainnav" onClick={moveToDashboard}>
            <AiFillDashboard/> DASHBOARD
         </span>
