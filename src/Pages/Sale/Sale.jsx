@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import './Sale.css'
-
-
-
-
+import LoadingSpinner from '../../Components/LoadingSpinner/LoadingSpinner';
 const Sale = () => {
     const [jobs, setJobs]=useState([]);
+    const[isLoading, setIsLoading]=useState(false);
+    const[errorMessage, setErrorMessage]=useState("");
     useEffect(()=>{
         const fetchData=async()=>{
+            setIsLoading(true);
             try {
                 const response=await fetch("https://eazzybackend-production.up.railway.app/jobs/getAll", {
                     headers:{
@@ -19,19 +19,19 @@ const Sale = () => {
                     throw new Error(`Network response was not ok, ${response}`);
                 }
                 const data=await response.json();
+                setIsLoading(false);
                 const loggedIn=parseInt(sessionStorage.getItem('id'))
                 const filteredData=data.filter(userapplication=>(userapplication.owner.id===loggedIn  && userapplication.postingStatus==="INACTIVE"))
                 setJobs(filteredData);
             } catch (error) {
+                setErrorMessage("Unable to fetch data")
                 throw new Error(`Error in response, ${error}`)
             }
         };
         fetchData();
     }, [])
-  return (
-    <div className='saleContainer'>
-    <header>INACTIVE JOBS</header>
-    <section>
+    const myjobs=(
+        <>
         {jobs.map((job)=>(
               <span>
               <h3>{job.title}</h3>
@@ -44,8 +44,14 @@ const Sale = () => {
               <button>VIEW DETAILS</button>
           </span>
         ))}
-      
-      
+        </>
+    )
+  return (
+    <div className='saleContainer'>
+    <header>INACTIVE JOBS</header>
+    <section>
+    {isLoading?<LoadingSpinner/>:myjobs}
+    {errorMessage&&<div className='error'>errorMessage</div>}  
     </section>
 </div>
   )
