@@ -26,6 +26,11 @@ const ClientNavigation = () => {
   const [isOpened, setIsOpened]=useState(false);
   const [styles, setStyles]=useState('navs');
 
+  const handleOpen=()=>{
+    setIsOpened(!isOpened);
+    openNavigation();
+  }
+
   const openNavigation=()=>{
     if(styles!="navs") setStyles("navs");
     else styles("openednav");
@@ -43,7 +48,7 @@ const ClientNavigation = () => {
             <span onClick={moveToAccount}>ACCOUNT</span>
             <span onClick={logout}>LOGOUT</span>
         </section>
-        <button onClick={openNavigation} className='openaction'>{isOpened? <CgClose/>:<VscThreeBars/>}</button>
+        <button onClick={handleOpen} className='openaction'>{isOpened? <CgClose/>:<VscThreeBars/>}</button>
     </div>
   )
 }
