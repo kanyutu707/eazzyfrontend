@@ -6,12 +6,16 @@ import { IoMdArrowDropleft } from "react-icons/io";
 import { MdArrowCircleRight } from "react-icons/md";
 import { IoMdArrowDroprightCircle } from "react-icons/io";
 import { useNavigate } from 'react-router-dom';
+import LoadingSpinner from '../../Components/LoadingSpinner/LoadingSpinner';
 
 const ActiveBookings = () => {
     const navigate=useNavigate();
+    const [isLoading, setIsLoading]=useState(false);
+    const [errorMessage, setErrorMessage]=useState("");
     const [applications, setApplications] = useState([]);
   useEffect(()=>{
     const fetchData=async ()=>{
+      setIsLoading(true);
       try {
         const response=await fetch("https://eazzybackend-production.up.railway.app/applications/getAll",{
           headers:{
@@ -23,11 +27,13 @@ const ActiveBookings = () => {
           throw new Error(`Network response was not ok`);
         }
         const data=await response.json();
+        setIsLoading(false);
         const loggedIn=parseInt(sessionStorage.getItem('id'))
         const filteredData=data.filter(userapplication=>(userapplication.applicant.id===loggedIn && userapplication.applicationStatus==="ACTIVE"))
         console.log(filteredData)
         setApplications(filteredData);
       } catch (error) {
+        setErrorMessage("Unable to fetch data")
         throw new Error(`Error encounted, ${error}`)
       }
     };
@@ -37,6 +43,23 @@ const ActiveBookings = () => {
   const moveToView=(id)=>{
     navigate(`/client/activeuserview/${id}`);
 }
+
+const bookingData=(
+  <>
+    {applications.map((application)=>(
+                <tr key={application.id}>
+                        <td>1</td>
+                        <td className='titleStyle'>{application.posting?.title}</td>
+                        <td>{application.posting?.postType}</td>
+                        <td>{application.posting?.description}</td>
+                        <td>{application.posting?.salary}</td>
+                        <td>{application.applicationDate}</td>
+                        <td></td>
+                        <td> <button onClick={() => moveToView(application.id)}>VIEW</button></td>
+                </tr>
+            ))}
+  </>
+)
   return (
     <div className='activebookingscontainer'>
         <header>ACTIVE APPLICATIONS</header>
@@ -61,18 +84,8 @@ const ActiveBookings = () => {
                 <th>ACTIONS</th>
             </thead>
             <tbody>
-            {applications.map((application)=>(
-                <tr key={application.id}>
-                        <td>1</td>
-                        <td className='titleStyle'>{application.posting?.title}</td>
-                        <td>{application.posting?.postType}</td>
-                        <td>{application.posting?.description}</td>
-                        <td>{application.posting?.salary}</td>
-                        <td>{application.applicationDate}</td>
-                        <td></td>
-                        <td> <button onClick={() => moveToView(application.id)}>VIEW</button></td>
-                </tr>
-            ))}
+              {isLoading?<LoadingSpinner/>:bookingData}
+              {errorMessage&&<div className='error'>errorMessage</div>}
             </tbody>
        
         </table>
