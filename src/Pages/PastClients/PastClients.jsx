@@ -36,6 +36,7 @@ const PastClients = () => {
    
   }, []);
   const tableData=(
+   <>
     {applications.map((application)=>(
       <tr key={application.id}>
       <td>{application.id}</td>
@@ -47,6 +48,7 @@ const PastClients = () => {
       
     </tr>  
    ))}
+   </>
   )
   return (
     <div className='pastclientscontainer'>
