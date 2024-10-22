@@ -43,7 +43,7 @@ const ClientNavigation = () => {
             <span onClick={moveToAccount}>ACCOUNT</span>
             <span onClick={logout}>LOGOUT</span>
         </section>
-        <button onClick={openNavigation}>{isOpened? <CgClose/>:<VscThreeBars/>}</button>
+        <button onClick={openNavigation} className='openaction'>{isOpened? <CgClose/>:<VscThreeBars/>}</button>
     </div>
   )
 }
