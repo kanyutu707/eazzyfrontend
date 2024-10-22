@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import './PastClients.css'
 import { MdArrowBack, MdArrowForward, MdArrowLeft, MdArrowRight } from 'react-icons/md'
 import Application from '../Application/Application';
+import LoadingSpinner from '../../Components/LoadingSpinner/LoadingSpinner';
 
 
 const PastClients = () => {
