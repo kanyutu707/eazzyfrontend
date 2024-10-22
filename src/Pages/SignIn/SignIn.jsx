@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import './SignIn.css'
-import { VscLoading } from 'react-icons/vsc';
+import LoadingSpinner from '../../Components/LoadingSpinner/LoadingSpinner';
 
 const SignIn = () => {
     const navigation=useNavigate();
@@ -84,7 +84,7 @@ const SignIn = () => {
    
   return (
     <>
-        {isLoading?<VscLoading/>:signin}
+        {isLoading?<LoadingSpinner/>:signin}
         {errorMessage&&<div className='error'>{errorMessage}</div>}
     </>
   )
