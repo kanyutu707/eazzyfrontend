@@ -35,6 +35,8 @@
 }
 .clientnavigationcontainer .openaction{
     display: none;
+    width: 25px;
+    height: 25px;
 }
 @media screen and (max-width:1200px) {
     .clientnavigationcontainer .navs span{
@@ -69,10 +71,12 @@
 .openednav{
     display: flex;
     flex-direction: column;
-   
-    
+    max-width: 300px;
+    justify-content: flex-end;
 }
-.openednav .navs span{
+
+.openednav  span{
+
     margin-top: 5px;
     font-weight: 570;
 }
