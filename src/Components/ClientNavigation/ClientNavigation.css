@@ -47,7 +47,7 @@
     }
 }
 @media screen and (max-width:700px){
-    .clientnavigationcontainer{
+    .clientnavigationcontainer:not(:first-child){
         display: flex;
         flex-direction: column;
         
