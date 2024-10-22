@@ -33,7 +33,7 @@
     border-radius: 1px;
    
 }
-.clientnavigationcontainer .openaction{
+.clientnavigationcontainer .openaction,  .clientnavigationcontainer .openaction svg{
     display: none;
    
 
@@ -61,7 +61,7 @@
     .clientnavigationcontainer .navs{
         display: none;
     }
-   .clientnavigationcontainer .openaction{
+   .clientnavigationcontainer .openaction,  .clientnavigationcontainer .openaction svg{
    
     border: none;
     background-color: transparent;
