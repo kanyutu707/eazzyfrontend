@@ -1,9 +1,12 @@
 import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import './SignIn.css'
+import { VscLoading } from 'react-icons/vsc';
 
 const SignIn = () => {
     const navigation=useNavigate();
+    const [isLoading, setIsLoading]=useState(false);
+    const [errorMessage, setErrorMessage]=useState("");
     const [formData, setFormData]=useState({
         "email":"",
         "password":""
@@ -15,6 +18,7 @@ const SignIn = () => {
     };
 
     const handleSubmit=async(e)=>{
+        setIsLoading(true);
         e.preventDefault();
         try {
             const response=await fetch("https://eazzybackend-production.up.railway.app/authenticate/login", {
@@ -27,6 +31,7 @@ const SignIn = () => {
             if(!response.ok){
                 throw new Error(`Network response was not ok, ${response}`);
             }
+            setIsLoading(false);
             const data=await response.json();
             const jwtToken=data.token;
             const parts=jwtToken.split('.');
@@ -38,6 +43,7 @@ const SignIn = () => {
             sessionStorage.setItem('firstName', payload.firstName);
             sessionStorage.setItem('lastName', payload.lastName);
             if(jwtToken){
+
                 if(payload.role==="ADMIN"){
                     navigation('../ADMIN/')
                 }
@@ -51,13 +57,13 @@ const SignIn = () => {
             }
             
         } catch (error) {
+            setErrorMessage("Unable to login")
             throw new Error(`There was a problem with your fetch operation, ${error}`);
         }
     }
 
-   
-  return (
-    <div className='signinform'>
+    const signin=(
+        <div className='signinform'>
     <form onSubmit={handleSubmit}>
         <header>SIGN IN FORM</header>
         <span className="input_group">
@@ -72,6 +78,13 @@ const SignIn = () => {
         <span>DO NOT HAVE AN ACCOUNT <Link to='../signup'>SIGN UP</Link></span>
     </form>
     </div>
+    )
+   
+  return (
+    <>
+        {isLoading?<VscLoading/>:signin}
+        {errorMessage&&<div className='error'>{errorMessage}</div>}
+    </>
   )
 }
 
