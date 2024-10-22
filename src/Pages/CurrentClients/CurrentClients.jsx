@@ -20,8 +20,9 @@ const CurrentClients = () => {
         if(!response.ok){
           throw new Error(`Network response was not ok`);
         }
-        setIsLoading(false);
+        
         const data=await response.json();
+        setIsLoading(false);
         console.log(data)
         const loggedIn=parseInt(sessionStorage.getItem('id'))
         const filteredData=data.filter(userapplication=>(userapplication.posting.owner.id===loggedIn && userapplication.posting.postingStatus==="ACTIVE" && userapplication.applicationStatus==="ACTIVE"))
@@ -35,7 +36,7 @@ const CurrentClients = () => {
    
   }, []);
   const tableData=(
-    <tbody>
+    <>
     {applications.map((application)=>(
         <tr>
         <td>1C</td>
@@ -50,7 +51,7 @@ const CurrentClients = () => {
      
     
 
-  </tbody>
+  </>
   )
   return (
     <div className='currentclientscontainer'>
@@ -76,10 +77,10 @@ const CurrentClients = () => {
         <th>REF NUMBER</th>
         
       </thead>
-     <>
+     <tbody>
       {isLoading?<LoadingSpinner/>:tableData}
       {errorMessage&&<div className='error'>errorMessage</div>}
-     </>
+     </tbody>
     </table>
   </div>
   )
