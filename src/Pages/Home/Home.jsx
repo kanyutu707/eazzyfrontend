@@ -30,7 +30,7 @@ const Home = () => {
           throw new Error(`Network response was not ok`);
         }
         const data=await response.json();
-        setIsLoading(true);
+        setIsLoading(false);
         const filteredData=data.filter(userapplication=>(userapplication.postingStatus==="ACTIVE"))
         setJobs(filteredData);
       } catch (error) {
