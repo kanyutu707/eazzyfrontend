@@ -24,21 +24,26 @@ const ClientNavigation = () => {
 
   }
   const [isOpened, setIsOpened]=useState(false);
-  const [styles, setStyles]=useState('navs')
+  const [styles, setStyles]=useState('navs');
+
+  const openNavigation=()=>{
+    if(styles!="navs") setStyles("navs");
+    else styles("openednav");
+  }
   return (
     <div className='clientnavigationcontainer'>
         <section className="logo">
             JOB LISTING SYSTEM
         </section>
         <section className={styles}>
-          <CgClose/>
+        
             <span onClick={moveToHome}>HOME</span>
             <span onClick={moveToActiveBookings}>ACTIVE APPLICATIONS</span>
             <span onClick={moveToPastBookings}>CLOSED APPLICATIONS</span>
             <span onClick={moveToAccount}>ACCOUNT</span>
             <span onClick={logout}>LOGOUT</span>
         </section>
-        <VscThreeBars className='openaction'/>
+        <button onClick={openNavigation}>{isOpened? <CgClose/>:<VscThreeBars/>}</button>
     </div>
   )
 }
