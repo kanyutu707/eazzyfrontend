@@ -31,7 +31,9 @@ const SignIn = () => {
             if(!response.ok){
                 throw new Error(`Network response was not ok, ${response}`);
             }
-            setIsLoading(false);
+            setTimeout(()=>{
+                setIsLoading(false);
+            }, 5000)
             const data=await response.json();
             const jwtToken=data.token;
             const parts=jwtToken.split('.');
