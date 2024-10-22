@@ -35,8 +35,7 @@
 }
 .clientnavigationcontainer .openaction{
     display: none;
-    width: 25px;
-    height: 25px;
+    
 }
 @media screen and (max-width:1200px) {
     .clientnavigationcontainer .navs span{
