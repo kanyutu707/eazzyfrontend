@@ -33,7 +33,7 @@ const ClientNavigation = () => {
 
   const openNavigation=()=>{
     if(styles!="navs") setStyles("navs");
-    else styles("openednav");
+    else setStyles("openednav");
   }
   return (
     <div className='clientnavigationcontainer'>
