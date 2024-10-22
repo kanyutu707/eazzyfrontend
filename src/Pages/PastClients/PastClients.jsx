@@ -6,8 +6,11 @@ import Application from '../Application/Application';
 
 const PastClients = () => {
   const [applications, setApplications] = useState([]);
+  const [isLoading, setIsLoading]=useState(false);
+  const [errorMessage, setErrorMessage]=useState("");
   useEffect(()=>{
     const fetchData=async ()=>{
+      setIsLoading(true);
       try {
         const response=await fetch("https://eazzybackend-production.up.railway.app/applications/getAll",{
           headers:{
@@ -19,17 +22,32 @@ const PastClients = () => {
           throw new Error(`Network response was not ok`);
         }
         const data=await response.json();
+        setIsLoading(false);
         console.log(data)
         const loggedIn=parseInt(sessionStorage.getItem('id'))
         const filteredData=data.filter(userapplication=>(userapplication.posting.owner.id===loggedIn && userapplication.posting.postingStatus==="ACTIVE" && userapplication.applicationStatus==="INACTIVE"))
         setApplications(filteredData);
       } catch (error) {
+        setErrorMessage("Unable to fetch data")
         throw new Error(`Error encounted, ${error}`)
       }
     };
     fetchData();
    
   }, []);
+  const tableData=(
+    {applications.map((application)=>(
+      <tr key={application.id}>
+      <td>{application.id}</td>
+      <td>{application.applicant?.firstName}</td> 
+      <td>{application.applicant?.lastName}</td> 
+      <td>{application.applicant?.email}</td>
+      <td>{application.applicationDate}</td>
+      <td>{application.posting?.title}</td>
+      
+    </tr>  
+   ))}
+  )
   return (
     <div className='pastclientscontainer'>
     <header>PAST CLIENTS</header>
@@ -56,18 +74,9 @@ const PastClients = () => {
         
       </thead>
       <tbody>
-      {applications.map((application)=>(
-           <tr key={application.id}>
-           <td>{application.id}</td>
-           <td>{application.applicant?.firstName}</td> 
-           <td>{application.applicant?.lastName}</td> 
-           <td>{application.applicant?.email}</td>
-           <td>{application.applicationDate}</td>
-           <td>{application.posting?.title}</td>
-           
-         </tr>  
-        ))}
-          
+     
+      {isLoading?<LoadingSpinner/>:tableData}
+      {errorMessage&&<div className='error'>errorMessage</div>}
       </tbody>
     </table>
   </div>
