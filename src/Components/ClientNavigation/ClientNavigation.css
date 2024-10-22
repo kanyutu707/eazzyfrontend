@@ -35,10 +35,7 @@
 }
 .clientnavigationcontainer .openaction{
     display: none;
-    border: none;
-    background-color: transparent;
-    display: flex;
-    align-items: flex-end;
+   
 
 }
 @media screen and (max-width:1200px) {
@@ -65,7 +62,13 @@
         display: none;
     }
    .clientnavigationcontainer .openaction{
-    display: block;
+   
+    border: none;
+    background-color: transparent;
+    display: flex;
+    width: 45px;
+    height: 45px;
+    align-items: flex-end;
    }
     .clientnavigationcontainer svg{
         display: block;
