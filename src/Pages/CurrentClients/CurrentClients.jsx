@@ -7,6 +7,8 @@ const CurrentClients = () => {
   const [applications, setApplications] = useState([]);
   const [isLoading, setIsLoading]=useState(false);
   const [errorMessage, setErrorMessage]=useState("");
+  const [searchItem, setSearchItem]=useState('');
+  const [filteredResults, setFilteredResults]=useState([]);
   useEffect(()=>{
     const BASE_URL = import.meta.env.VITE_APP_BASE_URL;
     const fetchData=async ()=>{
@@ -36,23 +38,72 @@ const CurrentClients = () => {
     fetchData();
    
   }, []);
+
+  const searchItems = (searchValue) => {
+
+    setSearchItem(searchValue);
+  
+   
+    const updatedSearchValue = searchValue.toLowerCase();
+  
+    if (updatedSearchValue !== '') {
+      const searchFilteredData = applications.filter((application) => {
+        
+        const postingValues = Object.values(application.posting).join('').toLowerCase();
+        const userValues=Object.values(application.applicant).join('').toLowerCase();
+       
+        const additionalPostingValues = Object.values(application).join('').toLowerCase(); // Assuming `posting` is available in scope
+  
+    
+        return postingValues.includes(updatedSearchValue) || additionalPostingValues.includes(updatedSearchValue)|| userValues.includes(updatedSearchValue);
+      });
+  
+      setFilteredResults(searchFilteredData);
+    } else {
+      setFilteredResults(applications);
+    }
+  };
   const tableData=(
     <>
-    {applications.map((application)=>(
-        <tr>
-        <td>1C</td>
-        <td>{application.applicant?.firstName}</td> 
-        <td>{application.applicant?.lastName}</td> 
-        <td>{application.applicant?.email}</td>
-        <td>{application.applicationDate}</td>
-        <td>{application.posting?.title}</td>
-        
-      </tr> 
-    ))}
-     
-    
+      {searchItem.length>1?(
+         <>
 
-  </>
+         {filteredResults.map((application)=>(
+             <tr>
+             <td>1C</td>
+             <td>{application.applicant?.firstName}</td> 
+             <td>{application.applicant?.lastName}</td> 
+             <td>{application.applicant?.email}</td>
+             <td>{application.applicationDate}</td>
+             <td>{application.posting?.title}</td>
+             
+           </tr> 
+         ))}
+          
+         
+     
+       </>
+      ):(
+         <>
+
+         {applications.map((application)=>(
+             <tr>
+             <td>1C</td>
+             <td>{application.applicant?.firstName}</td> 
+             <td>{application.applicant?.lastName}</td> 
+             <td>{application.applicant?.email}</td>
+             <td>{application.applicationDate}</td>
+             <td>{application.posting?.title}</td>
+             
+           </tr> 
+         ))}
+          
+         
+     
+       </>
+      )}
+    </>
+   
   )
   return (
     <div className='currentclientscontainer'>
@@ -67,7 +118,7 @@ const CurrentClients = () => {
       <MdArrowForward/>
       </span>
      
-      <input type="search"  placeholder='SEARCH DATA...'/>
+      <input type="search"  placeholder='SEARCH DATA...' onChange={(e)=>searchItems(e.target.value)}/>
       </caption>
       <thead>
         <th>#</th>
