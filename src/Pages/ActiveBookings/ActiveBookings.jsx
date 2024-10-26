@@ -14,6 +14,9 @@ const ActiveBookings = () => {
     const [isLoading, setIsLoading]=useState(false);
     const [errorMessage, setErrorMessage]=useState("");
     const [applications, setApplications] = useState([]);
+    const [searchItem, setSearchItem]=useState('');
+    const [filteredResults, setFilteredResults]=useState([]);
+    const [initialData, setInitialData]=useState([]);
   useEffect(()=>{
     const fetchData=async ()=>{
       setIsLoading(true);
@@ -33,6 +36,7 @@ const ActiveBookings = () => {
         const filteredData=data.filter(userapplication=>(userapplication.applicant.id===loggedIn && userapplication.applicationStatus==="ACTIVE"))
         console.log(filteredData)
         setApplications(filteredData);
+       
       } catch (error) {
         setErrorMessage("Unable to fetch data")
         throw new Error(`Error encounted, ${error}`)
@@ -45,21 +49,58 @@ const ActiveBookings = () => {
     navigate(`/client/activeuserview/${id}`);
 }
 
+const searchItems = (searchValue) => {
+  
+  setSearchItem(searchValue);
+
+  const updatedSearchValue = searchValue.toLowerCase();
+
+  if (updatedSearchValue !== '') {
+    const searchFilteredData = applications.filter((application) => {
+
+      return Object.values(application.posting).join('').toLowerCase().includes(updatedSearchValue);
+    });
+    setFilteredResults(searchFilteredData);
+  } else {
+    setFilteredResults(applications);
+  }
+};
+
 const bookingData=(
   <>
-    {applications.map((application)=>(
-                <tr key={application.id}>
-                        <td>1</td>
-                        <td className='titleStyle'>{application.posting?.title}</td>
-                        <td>{application.posting?.postType}</td>
-                        <td>{application.posting?.description}</td>
-                        <td>{application.posting?.salary}</td>
-                        <td>{application.applicationDate}</td>
-                        <td></td>
-                        <td> <button onClick={() => moveToView(application.id)}>VIEW</button></td>
-                </tr>
-            ))}
+    {searchItem.length>1 ?(
+       <>
+       {filteredResults.map((application)=>(
+                   <tr key={application.id}>
+                           <td>1</td>
+                           <td className='titleStyle'>{application.posting?.title}</td>
+                           <td>{application.posting?.postType}</td>
+                           <td>{application.posting?.description}</td>
+                           <td>{application.posting?.salary}</td>
+                           <td>{application.applicationDate}</td>
+                           <td></td>
+                           <td> <button onClick={() => moveToView(application.id)}>VIEW</button></td>
+                   </tr>
+               ))}
+     </>
+    ):(
+      <>
+      {applications.map((application)=>(
+                  <tr key={application.id}>
+                          <td>1</td>
+                          <td className='titleStyle'>{application.posting?.title}</td>
+                          <td>{application.posting?.postType}</td>
+                          <td>{application.posting?.description}</td>
+                          <td>{application.posting?.salary}</td>
+                          <td>{application.applicationDate}</td>
+                          <td></td>
+                          <td> <button onClick={() => moveToView(application.id)}>VIEW</button></td>
+                  </tr>
+              ))}
+    </>
+    )}
   </>
+ 
 )
   return (
     <div className='activebookingscontainer'>
@@ -67,7 +108,7 @@ const bookingData=(
         <div className="controls">
         <IoIosArrowDropleftCircle />
       <IoMdArrowDropleft />
-      <input type="search" placeholder='INPUT SEARCH ITEM'/>
+      <input type="search" placeholder='INPUT SEARCH ITEM' onChange={(e)=>searchItems(e.target.value)}/>
       <span>1/25</span>
       <IoMdArrowDroprightCircle />
 
