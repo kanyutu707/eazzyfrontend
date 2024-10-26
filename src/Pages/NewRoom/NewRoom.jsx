@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import './NewRoom.css';
 
 const NewRoom = () => {
+    const BASE_URL = import.meta.env.VITE_APP_BASE_URL;
     const [formData, setFormData] = useState({
         title: "",
         salary: "",
@@ -18,7 +19,7 @@ const NewRoom = () => {
     const handleSubmit=async (e)=>{
         e.preventDefault();
         try {
-            const response=await fetch("https://eazzybackend-production.up.railway.app/jobs/create", {
+            const response=await fetch(`${BASE_URL}/jobs/create`, {
                 method: "POST",
                 headers:{
                     'Authorization': `Bearer ${sessionStorage.getItem(`token`)}`,

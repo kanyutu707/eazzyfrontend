@@ -4,6 +4,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import LoadingSpinner from '../../Components/LoadingSpinner/LoadingSpinner';
 
 const SignUp = () => {
+    const BASE_URL = import.meta.env.VITE_APP_BASE_URL;
     const navigate=useNavigate();
     const [isLoading, setIsLoading]=useState(false);
     const [errorMessage, setErrorMessage]=useState("");
@@ -21,7 +22,7 @@ const SignUp = () => {
         setIsLoading(true);
         e.preventDefault();
         try {
-            const response=await fetch("https://eazzybackend-production.up.railway.app/authenticate/register", {
+            const response=await fetch(`${BASE_URL}/authenticate/register`, {
                 method: 'POST',
                 headers:{
                     'Content-Type':'application/json'

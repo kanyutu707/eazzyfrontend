@@ -3,6 +3,7 @@ import './Application.css'
 import { useParams } from 'react-router-dom';
 
 const Application = () => {
+    const BASE_URL = import.meta.env.VITE_APP_BASE_URL;
     let {id}=useParams();
     const [formData, setFormData] = useState({
         
@@ -17,7 +18,7 @@ const Application = () => {
     const handleSubmit=async (e)=>{
         e.preventDefault();
         try {
-            const response=await fetch("https://eazzybackend-production.up.railway.app/applications/create", {
+            const response=await fetch(`${BASE_URL}/applications/create`, {
                 method: "POST",
                 headers:{
                     'Authorization': `Bearer ${sessionStorage.getItem(`token`)}`,

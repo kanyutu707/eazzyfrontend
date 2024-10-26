@@ -4,6 +4,9 @@ import './SignIn.css'
 import LoadingSpinner from '../../Components/LoadingSpinner/LoadingSpinner';
 
 const SignIn = () => {
+    const BASE_URL = import.meta.env.VITE_APP_BASE_URL;
+    console.log(BASE_URL);
+
     const navigation=useNavigate();
     const [isLoading, setIsLoading]=useState(false);
     const [errorMessage, setErrorMessage]=useState("");
@@ -21,7 +24,7 @@ const SignIn = () => {
         setIsLoading(true);
         e.preventDefault();
         try {
-            const response=await fetch("https://eazzybackend-production.up.railway.app/authenticate/login", {
+            const response=await fetch(`${BASE_URL}/authenticate/login`, {
                 method:"POST",
                 headers:{
                     'Content-Type':'application/json'
@@ -31,10 +34,12 @@ const SignIn = () => {
             if(!response.ok){
                 throw new Error(`Network response was not ok, ${response}`);
             }
+          
             setTimeout(()=>{
                 setIsLoading(false);
             }, 5000)
             const data=await response.json();
+            
             const jwtToken=data.token;
             const parts=jwtToken.split('.');
             const payload=JSON.parse(atob(parts[1]));

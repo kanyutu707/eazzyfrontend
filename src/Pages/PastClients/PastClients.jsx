@@ -6,6 +6,7 @@ import LoadingSpinner from '../../Components/LoadingSpinner/LoadingSpinner';
 
 
 const PastClients = () => {
+  const BASE_URL = import.meta.env.VITE_APP_BASE_URL;
   const [applications, setApplications] = useState([]);
   const [isLoading, setIsLoading]=useState(false);
   const [errorMessage, setErrorMessage]=useState("");
@@ -13,7 +14,7 @@ const PastClients = () => {
     const fetchData=async ()=>{
       setIsLoading(true);
       try {
-        const response=await fetch("https://eazzybackend-production.up.railway.app/applications/getAll",{
+        const response=await fetch(`${BASE_URL}/applications/getAll`,{
           headers:{
              'Authorization':`Bearer ${sessionStorage.getItem('token')}`,
               'Content-Type':'application/json'

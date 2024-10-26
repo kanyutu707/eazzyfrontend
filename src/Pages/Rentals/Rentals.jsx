@@ -4,6 +4,7 @@ import './Rentals.css'
 import { useNavigate } from 'react-router-dom'
 import LoadingSpinner from '../../Components/LoadingSpinner/LoadingSpinner'
 const Rentals = () => {
+    const BASE_URL = import.meta.env.VITE_APP_BASE_URL;
     const navigate=useNavigate();
     const [isLoading, setIsLoading]=useState(false);
     const [errorMessage, setErrorMessage]=useState("");
@@ -15,7 +16,7 @@ const Rentals = () => {
         setIsLoading(true);
         const fetchData=async()=>{
             try {
-                const response=await fetch("https://eazzybackend-production.up.railway.app/jobs/getAll", {
+                const response=await fetch(`${BASE_URL}/jobs/getAll`, {
                     headers:{
                         'Authorization':`Bearer ${sessionStorage.getItem('token')}`,
                         'Content-Type':'application/json'
