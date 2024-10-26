@@ -62,7 +62,7 @@ const searchItems = (searchValue) => {
       const postingValues = Object.values(application.posting).join('').toLowerCase();
 
      
-      const additionalPostingValues = Object.values(posting).join('').toLowerCase(); // Assuming `posting` is available in scope
+      const additionalPostingValues = Object.values(application).join('').toLowerCase(); // Assuming `posting` is available in scope
 
   
       return postingValues.includes(updatedSearchValue) || additionalPostingValues.includes(updatedSearchValue);

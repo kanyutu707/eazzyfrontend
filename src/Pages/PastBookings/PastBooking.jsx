@@ -57,7 +57,7 @@ const PastBooking = () => {
           const postingValues = Object.values(application.posting).join('').toLowerCase();
     
          
-          const additionalPostingValues = Object.values(posting).join('').toLowerCase(); // Assuming `posting` is available in scope
+          const additionalPostingValues = Object.values(application).join('').toLowerCase(); // Assuming `posting` is available in scope
     
       
           return postingValues.includes(updatedSearchValue) || additionalPostingValues.includes(updatedSearchValue);
@@ -112,7 +112,7 @@ const PastBooking = () => {
     <div className="controls">
     <IoIosArrowDropleftCircle />
   <IoMdArrowDropleft />
-  <input type="search" placeholder='INPUT SEARCH ITEM'/>
+  <input type="search" placeholder='INPUT SEARCH ITEM' onChange={(e)=>searchItems(e.target.value)}/>
   <span>1/25</span>
   <IoMdArrowDroprightCircle />
 
