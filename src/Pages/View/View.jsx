@@ -6,6 +6,7 @@ import { FaBookmark, FaEdit } from 'react-icons/fa'
 import { useNavigate, useParams } from 'react-router-dom'
 
 const View = () => {
+  const BASE_URL = import.meta.env.VITE_APP_BASE_URL;
     const navigate=useNavigate();
     let {id}=useParams();
     const moveToApply=(id)=>{
@@ -15,7 +16,7 @@ const View = () => {
     useEffect(()=>{
         const fetchData=async ()=>{
           try {
-            const response=await fetch(`https://eazzybackend-production.up.railway.app/jobs/getById/${id}`,{
+            const response=await fetch(`${BASE_URL}/jobs/getById/${id}`,{
               headers:{
                  'Authorization':`Bearer ${sessionStorage.getItem('token')}`,
                   'Content-Type':'application/json'

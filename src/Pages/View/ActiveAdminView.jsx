@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom';
 
 const ActiveAdminView = () => {
+  const BASE_URL = import.meta.env.VITE_APP_BASE_URL;
     const navigate=useNavigate();
     let {id}=useParams();
  
@@ -9,7 +10,7 @@ const ActiveAdminView = () => {
     useEffect(()=>{
         const fetchData=async ()=>{
           try {
-            const response=await fetch(`https://eazzybackend-production.up.railway.app/jobs/getById/${id}`,{
+            const response=await fetch(`${BASE_URL}/jobs/getById/${id}`,{
               headers:{
                  'Authorization':`Bearer ${sessionStorage.getItem('token')}`,
                   'Content-Type':'application/json'
