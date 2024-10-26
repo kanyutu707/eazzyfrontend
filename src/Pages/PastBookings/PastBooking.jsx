@@ -14,6 +14,8 @@ const PastBooking = () => {
     const [isLoading, setIsLoading]=useState(false);
     const [errorMessage, setErrorMessage]=useState("");
     const [applications, setApplications] = useState([]);
+    const [searchItem, setSearchItem]=useState('');
+    const [filteredResults, setFilteredResults]=useState([]);
     useEffect(()=>{
       const fetchData=async ()=>{
         setIsLoading(true);
@@ -42,21 +44,66 @@ const PastBooking = () => {
      
     }, []);
 
+    const searchItems = (searchValue) => {
+    
+      setSearchItem(searchValue);
+    
+   
+      const updatedSearchValue = searchValue.toLowerCase();
+    
+      if (updatedSearchValue !== '') {
+        const searchFilteredData = applications.filter((application) => {
+          
+          const postingValues = Object.values(application.posting).join('').toLowerCase();
+    
+         
+          const additionalPostingValues = Object.values(posting).join('').toLowerCase(); // Assuming `posting` is available in scope
+    
+      
+          return postingValues.includes(updatedSearchValue) || additionalPostingValues.includes(updatedSearchValue);
+        });
+    
+        setFilteredResults(searchFilteredData);
+      } else {
+        setFilteredResults(applications);
+      }
+    };
+
   const pastJobs=(
     <>
-       {applications.map((application)=>(
-                <tr key={application.id}>
-                        <td>1</td>
-                        <td>{application.posting?.title}</td>
-                        <td>{application.posting?.postType}</td>
-                        <td>{application.posting?.description}</td>
-                        <td>{application.posting?.salary}</td>
-                        <td>{application.applicationDate}</td>
-                        <td></td>
-                        <td> </td>
-                </tr>
-            ))}
+      {searchItem.length>1?(
+         <>
+         {filteredResults.map((application)=>(
+                  <tr key={application.id}>
+                          <td>1</td>
+                          <td>{application.posting?.title}</td>
+                          <td>{application.posting?.postType}</td>
+                          <td>{application.posting?.description}</td>
+                          <td>{application.posting?.salary}</td>
+                          <td>{application.applicationDate}</td>
+                          <td></td>
+                          <td> </td>
+                  </tr>
+              ))}
+      </>
+      ):(
+        <>
+        {applications.map((application)=>(
+                 <tr key={application.id}>
+                         <td>1</td>
+                         <td>{application.posting?.title}</td>
+                         <td>{application.posting?.postType}</td>
+                         <td>{application.posting?.description}</td>
+                         <td>{application.posting?.salary}</td>
+                         <td>{application.applicationDate}</td>
+                         <td></td>
+                         <td> </td>
+                 </tr>
+             ))}
+     </>
+      )}
     </>
+   
   )
   return (
     <div className='pastbookingscontainer'>

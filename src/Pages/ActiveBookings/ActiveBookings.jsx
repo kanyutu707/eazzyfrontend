@@ -16,7 +16,7 @@ const ActiveBookings = () => {
     const [applications, setApplications] = useState([]);
     const [searchItem, setSearchItem]=useState('');
     const [filteredResults, setFilteredResults]=useState([]);
-    const [initialData, setInitialData]=useState([]);
+ 
   useEffect(()=>{
     const fetchData=async ()=>{
       setIsLoading(true);
@@ -50,16 +50,24 @@ const ActiveBookings = () => {
 }
 
 const searchItems = (searchValue) => {
-  
+
   setSearchItem(searchValue);
 
+ 
   const updatedSearchValue = searchValue.toLowerCase();
 
   if (updatedSearchValue !== '') {
     const searchFilteredData = applications.filter((application) => {
+      
+      const postingValues = Object.values(application.posting).join('').toLowerCase();
 
-      return Object.values(application.posting).join('').toLowerCase().includes(updatedSearchValue);
+     
+      const additionalPostingValues = Object.values(posting).join('').toLowerCase(); // Assuming `posting` is available in scope
+
+  
+      return postingValues.includes(updatedSearchValue) || additionalPostingValues.includes(updatedSearchValue);
     });
+
     setFilteredResults(searchFilteredData);
   } else {
     setFilteredResults(applications);
