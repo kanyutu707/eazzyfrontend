@@ -33,7 +33,7 @@ const ActiveBookings = () => {
         const data=await response.json();
         setIsLoading(false);
         const loggedIn=parseInt(sessionStorage.getItem('id'))
-        const filteredData=data.filter(userapplication=>(userapplication.applicant.id===loggedIn && userapplication.applicationStatus==="ACTIVE"))
+        const filteredData=data.filter(userapplication=>(userapplication.applicant.id===loggedIn && userapplication.applicationStatus==="ACTIVE" && userapplication.posting.postingStatus==="ACTIVE"))
         console.log(filteredData)
         setApplications(filteredData);
        

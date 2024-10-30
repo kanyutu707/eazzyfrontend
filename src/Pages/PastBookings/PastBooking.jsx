@@ -33,7 +33,7 @@ const PastBooking = () => {
           setIsLoading(false);
           console.log(data)
           const loggedIn=parseInt(sessionStorage.getItem('id'))
-          const filteredData=data.filter(userapplication=>(userapplication.applicant.id===loggedIn && userapplication.applicationStatus==="INACTIVE"))
+          const filteredData=data.filter(userapplication=>(userapplication.applicant.id===loggedIn && (userapplication.applicationStatus==="INACTIVE" || userapplication.posting.postingStatus==="INACTIVE")))
           setApplications(filteredData);
         } catch (error) {
           setErrorMessage("Unable to fetch data");

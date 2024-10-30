@@ -35,12 +35,12 @@ const ActiveUserView = () => {
       e.preventDefault();
       console.log('handleSubmit called');
       try {
-          console.log('Sending request to:', `https://eazzybackend-production.up.railway.app/applications/update/${id}`);
+          console.log('Sending request to:', `${BASE_URL}/applications/update/${id}`);
           console.log('Request body:', JSON.stringify({
               applicationStatus: "INACTIVE",
               applicationDate: new Date().toISOString(),
           }));
-          const response = await fetch(`https://eazzybackend-production.up.railway.app/applications/update/${id}`, {
+          const response = await fetch(`${BASE_URL}/applications/update/${id}`, {
               method: "PUT",
               headers: {
                   'Authorization': `Bearer ${sessionStorage.getItem('token')}`,
@@ -48,7 +48,7 @@ const ActiveUserView = () => {
               },
               body: JSON.stringify({
                   applicationStatus: "INACTIVE",
-                  applicationDate: new Date().toISOString(),
+                 
               }),
           });
           console.log('Response status:', response.status);
@@ -96,7 +96,7 @@ const ActiveUserView = () => {
             </ul>
        
             <div className='actionbuttons'>
-                <button onClick={handleSubmit}>APPLY</button>
+                <button onClick={handleSubmit}>WITHDRAW</button>
             </div>
         </section>
         }
