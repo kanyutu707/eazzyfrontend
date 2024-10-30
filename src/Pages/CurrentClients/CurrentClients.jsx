@@ -70,12 +70,14 @@ const CurrentClients = () => {
 
          {filteredResults.map((application)=>(
              <tr>
-             <td>1C</td>
-             <td>{application.applicant?.firstName}</td> 
-             <td>{application.applicant?.lastName}</td> 
-             <td>{application.applicant?.email}</td>
-             <td>{application.applicationDate}</td>
+             <td>{application.id}</td>
+             <td>
+    <a href={`https://mail.google.com/mail/?view=cm&fs=1&to=${application.applicant?.email}`}>EMAIL</a>
+</td>
              <td>{application.posting?.title}</td>
+             <td><a href={application.portfoliourl}>PORTFOLIO</a></td> 
+             <td><a href={application.resumeurl}>RESUME</a></td> 
+             <td><a href={application.coverLetterurl}>COVER LETTER</a></td>
              
            </tr> 
          ))}
@@ -88,12 +90,14 @@ const CurrentClients = () => {
 
          {applications.map((application)=>(
              <tr>
-             <td>1C</td>
-             <td>{application.applicant?.firstName}</td> 
-             <td>{application.applicant?.lastName}</td> 
-             <td>{application.applicant?.email}</td>
-             <td>{application.applicationDate}</td>
+             <td>{application.id}</td>
+             <td>
+    <a href={`https://mail.google.com/mail/?view=cm&fs=1&to=${application.applicant?.email}`}>EMAIL</a>
+</td>
              <td>{application.posting?.title}</td>
+             <td><a href={application.portfoliourl}>PORTFOLIO</a></td> 
+             <td><a href={application.resumeurl}>RESUME</a></td> 
+             <td><a href={application.coverLetterurl}>COVER LETTER</a></td>
              
            </tr> 
          ))}
@@ -122,11 +126,12 @@ const CurrentClients = () => {
       </caption>
       <thead>
         <th>#</th>
-        <th>FIRST NAME</th>
-        <th>LAST NAME</th>
         <th>EMAIL</th>
-        <th>APP DATE</th>
-        <th>REF NUMBER</th>
+        <th>TITLE</th>
+        <th>PORFOLIO</th>
+        <th>COVER LETTER</th>
+        <th>RESUME</th>
+
         
       </thead>
      <tbody>

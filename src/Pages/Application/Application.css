@@ -15,7 +15,15 @@
 .applicationcontainer form .text_group{
     display: grid;
     grid-template-columns: repeat(1, 1fr);
-    grid-gap: 10px;
+    grid-gap: 20px;
+}
+.applicationcontainer form .text_group label{
+   width: fit-content;
+}
+.applicationcontainer form .text_group input{
+    margin-left: 1%;
+   
+    height: 55px;
 }
 .applicationcontainer form header{
     display: flex;
